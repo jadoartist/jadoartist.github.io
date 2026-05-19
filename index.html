@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="邪道 Jado — AI音楽アーティスト。和×サイバー×ラップ。月1本MV公開中。">
+<meta name="keywords" content="邪道Jado, JadoArtist, JapaneseHipHop, 和ラップ, 叙情ラップ, AIアート, SunoAI">
+<meta property="og:title" content="邪道 Jado — Official Site">
+<meta property="og:description" content="和×サイバー×ラップ。月1本MV公開中。">
+<meta property="og:type" content="website">
+<title>邪道 Jado — Official Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Bebas+Neue&family=Cormorant+Garamond:wght@300;700&display=swap" rel="stylesheet">
+<style>
+/* ============ Reset & Variables ============ */
+:root {
+  --bg: #0A0A0A;
+  --bg-elev: #161616;
+  --text: #E8EAED;
+  --text-mute: #888;
+  --accent-red: #C62828;
+  --accent-pink: #FF2E88;
+  --accent-gold: #D4A017;
+  --accent-cyan: #00B7C2;
+  --border: #2A2A2A;
+  --font-jp-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-en-display: "Bebas Neue", "Arial Black", sans-serif;
+  --font-en-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ============ Nav ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: 16px 32px;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: var(--font-jp-serif);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+.nav-brand span { color: var(--accent-pink); margin-left: 4px; font-family: var(--font-en-display); font-size: 18px; letter-spacing: 3px; }
+.nav-links { display: flex; gap: 28px; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+.nav-links a { color: var(--text-mute); transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent-pink); }
+@media (max-width: 720px) {
+  .nav { padding: 14px 18px; }
+  .nav-links { display: none; }
+}
+
+/* ============ Hero ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px 40px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(198, 40, 40, 0.18), transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(255, 46, 136, 0.12), transparent 50%);
+  pointer-events: none;
+}
+.hero-content { text-align: center; position: relative; z-index: 1; max-width: 900px; }
+.hero-overline {
+  font-family: var(--font-en-display);
+  font-size: 14px;
+  letter-spacing: 8px;
+  color: var(--accent-pink);
+  margin-bottom: 16px;
+  animation: fadeUp 1.4s ease-out;
+}
+.hero-title {
+  font-family: var(--font-jp-serif);
+  font-size: clamp(64px, 14vw, 180px);
+  font-weight: 900;
+  letter-spacing: 8px;
+  line-height: 0.95;
+  margin-bottom: 24px;
+  animation: fadeUp 1.6s ease-out 0.2s backwards;
+}
+.hero-title .red { color: var(--accent-red); }
+.hero-subtitle {
+  font-family: var(--font-en-display);
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: 6px;
+  color: var(--text-mute);
+  margin-bottom: 32px;
+  animation: fadeUp 1.8s ease-out 0.4s backwards;
+}
+.hero-tagline {
+  font-family: var(--font-jp-serif);
+  font-size: clamp(15px, 2vw, 19px);
+  line-height: 2.2;
+  color: var(--text);
+  animation: fadeUp 2s ease-out 0.6s backwards;
+}
+.hero-tagline .accent { color: var(--accent-pink); }
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-en-display);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-mute);
+  animation: bounce 2s ease-in-out infinite;
+}
+.hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: var(--text-mute);
+  margin: 12px auto 0;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
+
+/* ============ Sections ============ */
+section { padding: 120px 24px; position: relative; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-head {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-overline {
+  font-family: var(--font-en-display);
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--accent-pink);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-jp-serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 18px;
+}
+.section-lead {
+  font-family: var(--font-jp-serif);
+  font-size: 15px;
+  color: var(--text-mute);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 2;
+}
+
+/* ============ Music ============ */
+.music { background: var(--bg-elev); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.mv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.mv-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.4s, border-color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.mv-card:hover { transform: translateY(-6px); border-color: var(--accent-pink); }
+.mv-thumb {
+  aspect-ratio: 16 / 9;
+  background: #222 center/cover no-repeat;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.mv-thumb-fallback {
+  font-family: var(--font-jp-serif);
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--text-mute);
+  letter-spacing: 6px;
+}
+.mv-thumb::after {
+  content: '▶';
+  position: absolute;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 46, 136, 0.85);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.mv-card:hover .mv-thumb::after { opacity: 1; }
+.mv-info { padding: 20px; }
+.mv-num {
+  font-family: var(--font-en-display);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-mute);
+  margin-bottom: 6px;
+}
+.mv-title {
+  font-family: var(--font-jp-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.mv-title-en {
+  font-family: var(--font-en-serif);
+  font-size: 14px;
+  color: var(--accent-pink);
+  font-style: italic;
+}
+.mv-status {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.mv-status.live { background: var(--accent-pink); color: white; }
+.mv-status.coming { background: var(--accent-gold); color: #0A0A0A; }
+.mv-status.archive { background: var(--border); color: var(--text-mute); }
+
+/* ============ About ============ */
+.about-quote {
+  font-family: var(--font-jp-serif);
+  font-size: clamp(24px, 3.5vw, 42px);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 700;
+}
+.about-quote .accent { color: var(--accent-red); }
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px; }
+.about-block h3 {
+  font-family: var(--font-en-display);
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: var(--accent-pink);
+  margin-bottom: 14px;
+}
+.about-block p {
+  font-family: var(--font-jp-serif);
+  font-size: 16px;
+  line-height: 2;
+  color: var(--text-mute);
+}
+
+/* ============ Links (SNS Hub) ============ */
+.links { background: var(--bg-elev); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; max-width: 800px; margin: 0 auto; }
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: all 0.3s;
+  border-left: 4px solid transparent;
+}
+.link-card:hover { transform: translateX(4px); border-left-color: var(--accent-pink); }
+.link-card[data-platform="youtube"]:hover { border-left-color: #FF0000; }
+.link-card[data-platform="tiktok"]:hover { border-left-color: #FF2E88; }
+.link-card[data-platform="instagram"]:hover { border-left-color: #E1306C; }
+.link-card[data-platform="x"]:hover { border-left-color: #1DA1F2; }
+.link-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.link-info { flex: 1; min-width: 0; }
+.link-name {
+  font-family: var(--font-en-display);
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+.link-handle {
+  font-size: 12px;
+  color: var(--text-mute);
+  word-break: break-all;
+}
+.link-arrow { color: var(--text-mute); font-size: 18px; flex-shrink: 0; }
+.link-card:hover .link-arrow { color: var(--accent-pink); }
+
+/* ============ Contact ============ */
+.contact { text-align: center; }
+.contact-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 18px 56px;
+  font-family: var(--font-jp-serif);
+  font-size: 16px;
+  letter-spacing: 4px;
+  border: 1px solid var(--accent-pink);
+  color: var(--accent-pink);
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.contact-button:hover { background: var(--accent-pink); color: white; }
+.contact-mail {
+  display: block;
+  margin-top: 24px;
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  color: var(--text-mute);
+  font-size: 14px;
+}
+
+/* ============ Footer ============ */
+footer {
+  padding: 60px 24px 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-jp-serif);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 12px;
+}
+.footer-tagline {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  color: var(--text-mute);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.footer-copy {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 720px) {
+  section { padding: 80px 20px; }
+  .section-head { margin-bottom: 40px; }
+  .hero-title { letter-spacing: 4px; }
+  .nav-brand { font-size: 18px; letter-spacing: 3px; }
+  .link-card { padding: 16px 18px; }
+}
+
+/* ============ Reveal animation ============ */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">邪道<span>JADO</span></div>
+  <div class="nav-links">
+    <a href="#music">Music</a>
+    <a href="#about">About</a>
+    <a href="#links">Links</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <div class="hero-overline">AI MUSIC ARTIST</div>
+    <h1 class="hero-title">邪道<span class="red">.</span></h1>
+    <div class="hero-subtitle">JADO</div>
+    <p class="hero-tagline">
+      和の魂を纏う、AI時代のアウトロー詩人。<br>
+      <span class="accent">月1本MV公開中。</span><br>
+      正道に飽きた者へ、捧ぐ。
+    </p>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ============ MUSIC ============ -->
+<section class="music" id="music">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-overline">MUSIC VIDEOS</div>
+      <h2 class="section-title">Discography</h2>
+      <p class="section-lead">和×サイバー×ラップ。月1本のペースで儀式を続ける。</p>
+    </div>
+    <div class="mv-grid">
+      <!-- MV04 (coming) -->
+      <a class="mv-card reveal" href="#" data-mv="mv04">
+        <div class="mv-thumb"><div class="mv-thumb-fallback">名</div></div>
+        <div class="mv-info">
+          <div class="mv-num">MV 04 — 6/6 (Sat) 19:00</div>
+          <div class="mv-title">名前の重さ</div>
+          <div class="mv-title-en">Weight of a Name</div>
+          <span class="mv-status coming">COMING SOON</span>
+        </div>
+      </a>
+      <!-- MV03 -->
+      <a class="mv-card reveal" href="#" data-mv="mv03">
+        <div class="mv-thumb"><div class="mv-thumb-fallback">石</div></div>
+        <div class="mv-info">
+          <div class="mv-num">MV 03 — 2026.5.2</div>
+          <div class="mv-title">石庭</div>
+          <div class="mv-title-en">Karesansui</div>
+          <span class="mv-status live">▶ WATCH</span>
+        </div>
+      </a>
+      <!-- MV02 -->
+      <a class="mv-card reveal" href="#" data-mv="mv02">
+        <div class="mv-thumb"><div class="mv-thumb-fallback">涙</div></div>
+        <div class="mv-info">
+          <div class="mv-num">MV 02</div>
+          <div class="mv-title">赤い涙</div>
+          <div class="mv-title-en">Red Tears</div>
+          <span class="mv-status live">▶ WATCH</span>
+        </div>
+      </a>
+      <!-- MV01 -->
+      <a class="mv-card reveal" href="#" data-mv="mv01">
+        <div class="mv-thumb"><div class="mv-thumb-fallback">逆</div></div>
+        <div class="mv-info">
+          <div class="mv-num">MV 01</div>
+          <div class="mv-title">逆さまの世界</div>
+          <div class="mv-title-en">Upside-Down World</div>
+          <span class="mv-status live">▶ WATCH</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-overline">ABOUT</div>
+      <h2 class="section-title">邪道、それは道。</h2>
+    </div>
+    <p class="about-quote reveal">
+      正道は<span class="accent">飽和した</span>。<br>
+      だから俺は、邪道を行く。
+    </p>
+    <div class="about-grid">
+      <div class="about-block reveal">
+        <h3>WHO</h3>
+        <p>邪道Jadoは、和の魂とAI時代の影が交差するAI音楽アーティスト。素顔は永遠に出さない。声は隠さない。それはブランドの<strong>契約</strong>である。</p>
+      </div>
+      <div class="about-block reveal">
+        <h3>WHAT</h3>
+        <p>和×サイバー×ラップ。三味線が歪み、能管がドロップするヒップホップ。墨絵がグリッチし、神像がホログラムで降臨する映像。</p>
+      </div>
+      <div class="about-block reveal">
+        <h3>WHY</h3>
+        <p>「居場所がない」と感じる魂に、影の中に居場所があることを示す。月1本MVを最低12ヶ月続ける。沈黙は許される、停止は許されない。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LINKS (SNS HUB) ============ -->
+<section class="links" id="links">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-overline">CONNECT</div>
+      <h2 class="section-title">邪道民への入口</h2>
+      <p class="section-lead">月1本の儀式を見逃さないために。</p>
+    </div>
+    <div class="links-grid">
+      <a class="link-card reveal" data-platform="youtube" href="https://www.youtube.com/@JadoArtist?sub_confirmation=1" target="_blank" rel="noopener">
+        <div class="link-icon">🎵</div>
+        <div class="link-info">
+          <div class="link-name">YouTube</div>
+          <div class="link-handle">@JadoArtist — 月1本MV+Shorts</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a class="link-card reveal" data-platform="tiktok" href="https://www.tiktok.com/@JadoArtist" target="_blank" rel="noopener">
+        <div class="link-icon">🎬</div>
+        <div class="link-info">
+          <div class="link-name">TikTok</div>
+          <div class="link-handle">@JadoArtist — 週3-5本</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a class="link-card reveal" data-platform="instagram" href="https://www.instagram.com/JadoArtist" target="_blank" rel="noopener">
+        <div class="link-icon">📷</div>
+        <div class="link-info">
+          <div class="link-name">Instagram</div>
+          <div class="link-handle">@JadoArtist — Reels+詩テキスト</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a class="link-card reveal" data-platform="x" href="https://x.com/JadoArtist" target="_blank" rel="noopener">
+        <div class="link-icon">🐦</div>
+        <div class="link-info">
+          <div class="link-name">X (Twitter)</div>
+          <div class="link-handle">@JadoArtist — 毎日1-3本</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-overline">CONTACT</div>
+      <h2 class="section-title">仕事の依頼・コラボ</h2>
+      <p class="section-lead">タイアップ・コラボ・取材のお問い合わせはこちら。</p>
+    </div>
+    <a class="contact-button reveal" href="mailto:contact@jadoartist.com">contact@jadoartist.com</a>
+    <span class="contact-mail">※ 邪道民へのファンレターも歓迎</span>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-brand">邪道 JADO</div>
+  <div class="footer-tagline">— 邪道は道である。放浪ではない。</div>
+  <div class="footer-copy">© 2026 邪道 JADO. ALL RIGHTS RESERVED.</div>
+</footer>
+
+<script>
+// ============ Reveal animations on scroll ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ============ Smooth scroll ============
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ============ MV links（後でikkosanさんが実URLに置換）============
+const MV_URLS = {
+  mv01: 'https://www.youtube.com/@JadoArtist',  // ← 実MV URLに置換
+  mv02: 'https://www.youtube.com/@JadoArtist',
+  mv03: 'https://www.youtube.com/@JadoArtist',
+  mv04: 'https://www.youtube.com/@JadoArtist'   // 公開後に置換
+};
+document.querySelectorAll('.mv-card[data-mv]').forEach(card => {
+  const id = card.dataset.mv;
+  const url = MV_URLS[id];
+  if (url) card.setAttribute('href', url);
+});
+</script>
+</body>
+</html>
