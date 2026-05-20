@@ -320,19 +320,47 @@ section { padding: 120px 24px; position: relative; }
 
 /* ============ Contact ============ */
 .contact { text-align: center; }
+.contact-email-display {
+  display: inline-block;
+  margin: 20px 0 24px;
+  padding: 16px 32px;
+  font-family: var(--font-en-serif);
+  font-size: 18px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--text);
+  letter-spacing: 1px;
+  user-select: all;
+  -webkit-user-select: all;
+  cursor: text;
+}
+.contact-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
 .contact-button {
   display: inline-block;
-  margin-top: 20px;
-  padding: 18px 56px;
+  padding: 14px 32px;
   font-family: var(--font-jp-serif);
-  font-size: 16px;
-  letter-spacing: 4px;
+  font-size: 14px;
+  letter-spacing: 3px;
   border: 1px solid var(--accent-pink);
   color: var(--accent-pink);
+  background: transparent;
   font-weight: 700;
   transition: all 0.3s;
+  cursor: pointer;
+  text-align: center;
 }
 .contact-button:hover { background: var(--accent-pink); color: white; }
+.contact-button.copied {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #0A0A0A;
+}
 .contact-mail {
   display: block;
   margin-top: 24px;
@@ -544,7 +572,12 @@ footer {
       <h2 class="section-title">仕事の依頼・コラボ</h2>
       <p class="section-lead">タイアップ・コラボ・取材のお問い合わせはこちら。</p>
     </div>
-    <a class="contact-button reveal" href="mailto:jado.artist.music@gmail.com">jado.artist.music@gmail.com</a>
+    <div class="contact-email-display reveal" id="contact-email">jado.artist.music@gmail.com</div>
+    <div class="contact-buttons reveal">
+      <button class="contact-button" onclick="copyEmail(this)">📋 アドレスをコピー</button>
+      <a class="contact-button" href="https://mail.google.com/mail/?view=cm&amp;to=jado.artist.music@gmail.com&amp;su=邪道Jado｜お問い合わせ" target="_blank" rel="noopener">🌐 Gmailで作成</a>
+      <a class="contact-button" href="mailto:jado.artist.music@gmail.com?subject=邪道Jado｜お問い合わせ">📧 メーラーで開く</a>
+    </div>
     <span class="contact-mail">※ 邪道民へのファンレターも歓迎</span>
   </div>
 </section>
@@ -591,6 +624,44 @@ document.querySelectorAll('.mv-card[data-mv]').forEach(card => {
   const url = MV_URLS[id];
   if (url) card.setAttribute('href', url);
 });
+
+// ============ Copy email to clipboard ============
+function copyEmail(btn) {
+  const email = 'jado.artist.music@gmail.com';
+  const originalText = btn.textContent;
+
+  const showCopied = () => {
+    btn.textContent = '✓ コピーしました';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.classList.remove('copied');
+    }, 2000);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(email).then(showCopied).catch(() => fallbackCopy(email, showCopied));
+  } else {
+    fallbackCopy(email, showCopied);
+  }
+}
+
+function fallbackCopy(text, onSuccess) {
+  // 古いブラウザ/HTTP環境用のフォールバック
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    onSuccess();
+  } catch (e) {
+    alert('コピーに失敗しました。手動でアドレスをコピーしてください:\n' + text);
+  }
+  document.body.removeChild(textarea);
+}
 </script>
 </body>
 </html>
