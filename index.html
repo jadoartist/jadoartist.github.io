@@ -727,10 +727,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // ============ MV links（後でikkosanさんが実URLに置換）============
 const MV_URLS = {
-  mv01: 'https://www.youtube.com/@%E9%82%AA%E9%81%93Jado',  // ← 実MV URLに置換
-  mv02: 'https://www.youtube.com/@%E9%82%AA%E9%81%93Jado',
-  mv03: 'https://www.youtube.com/@%E9%82%AA%E9%81%93Jado',
-  mv04: 'https://www.youtube.com/@%E9%82%AA%E9%81%93Jado'   // 公開後に置換
+  mv01: 'https://www.youtube.com/watch?v=hdFvHNGgkNw',  // 逆さまの世界 / Upside-Down World
+  mv02: 'https://www.youtube.com/watch?v=4XZQ_MN99U0',  // 赤い涙 / Red Tears
+  mv03: 'https://www.youtube.com/watch?v=swG2CrGIW68',  // 石庭 / Karesansui
+  mv04: 'https://www.youtube.com/@%E9%82%AA%E9%81%93Jado'   // 6/6公開後に本編URLへ差し替え
 };
 document.querySelectorAll('.mv-card[data-mv]').forEach(card => {
   const id = card.dataset.mv;
