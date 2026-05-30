@@ -299,6 +299,9 @@ section { padding: 120px 24px; position: relative; }
 .link-card[data-platform="tiktok"]:hover { border-left-color: #FF2E88; }
 .link-card[data-platform="instagram"]:hover { border-left-color: #E1306C; }
 .link-card[data-platform="x"]:hover { border-left-color: #1DA1F2; }
+.link-card[data-platform="spotify"]:hover { border-left-color: #1DB954; }
+.link-card[data-platform="applemusic"]:hover { border-left-color: #FA243C; }
+.link-card[data-platform="youtubemusic"]:hover { border-left-color: #FF0000; }
 .link-icon {
   font-size: 28px;
   flex-shrink: 0;
@@ -417,6 +420,7 @@ footer {
   <div class="nav-brand">邪道<span>JADO</span></div>
   <div class="nav-links">
     <a href="#music">Music</a>
+    <a href="#listen">Listen</a>
     <a href="#about">About</a>
     <a href="#links">Links</a>
     <a href="#contact">Contact</a>
@@ -486,6 +490,43 @@ footer {
           <div class="mv-title-en">Upside-Down World</div>
           <span class="mv-status live">▶ WATCH</span>
         </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LISTEN (STREAMING) ============ -->
+<section class="links" id="listen">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-overline">STREAMING</div>
+      <h2 class="section-title">配信中</h2>
+      <p class="section-lead">主要ストリーミングで「邪道Jado」を聴く。</p>
+    </div>
+    <div class="links-grid">
+      <a class="link-card reveal" data-platform="spotify" href="https://open.spotify.com/artist/5Lo8q3iIcPUFxH1SAQDMyj" target="_blank" rel="noopener">
+        <div class="link-icon">🎧</div>
+        <div class="link-info">
+          <div class="link-name">Spotify</div>
+          <div class="link-handle">フォローして聴く</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a class="link-card reveal" data-platform="applemusic" href="https://music.apple.com/jp/artist/%E9%82%AA%E9%81%93jado/1886660581" target="_blank" rel="noopener">
+        <div class="link-icon">🍎</div>
+        <div class="link-info">
+          <div class="link-name">Apple Music</div>
+          <div class="link-handle">ライブラリに追加</div>
+        </div>
+        <div class="link-arrow">→</div>
+      </a>
+      <a class="link-card reveal" data-platform="youtubemusic" href="https://music.youtube.com/channel/UCFeadEbuIFBQjHSpDGc02gg" target="_blank" rel="noopener">
+        <div class="link-icon">▶️</div>
+        <div class="link-info">
+          <div class="link-name">YouTube Music</div>
+          <div class="link-handle">チャンネルで聴く</div>
+        </div>
+        <div class="link-arrow">→</div>
       </a>
     </div>
   </div>
