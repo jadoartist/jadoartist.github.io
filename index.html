@@ -511,8 +511,8 @@ footer {
       正道に飽きた者へ、捧ぐ。
     </p>
     <div class="hero-cta">
-      <a class="hero-btn primary" href="https://www.youtube.com/watch?v=3aZ3cvgacqs" target="_blank" rel="noopener">▶ 最新MVを観る</a>
-      <a class="hero-btn outline" href="#listen">🎧 配信を聴く</a>
+      <a class="hero-btn primary" href="https://www.youtube.com/shorts/TDFKhBFSFUo" target="_blank" rel="noopener">▶ 新曲「羽音」を聴く</a>
+      <a class="hero-btn outline" href="https://www.youtube.com/watch?v=TYp3rLSQO60" target="_blank" rel="noopener">🎧 全曲ミックス 37分</a>
       <a class="hero-btn outline" href="https://www.youtube.com/@%E9%82%AA%E9%81%93Jado?sub_confirmation=1" target="_blank" rel="noopener">🔔 チャンネル登録</a>
     </div>
   </div>
@@ -528,6 +528,26 @@ footer {
       <p class="section-lead">和×サイバー×ラップ。月1本のペースで儀式を続ける。</p>
     </div>
     <div class="mv-grid">
+      <!-- MV07（Shortのみ公開中・本編は近日公開） -->
+      <a class="mv-card reveal" href="#" data-mv="mv07">
+        <div class="mv-thumb"><img src="img/mv07.jpg" alt="邪道Jado MV07 羽音 / Haoto サムネイル" loading="lazy"></div>
+        <div class="mv-info">
+          <div class="mv-num">MV 07 — COMING SOON</div>
+          <div class="mv-title">羽音</div>
+          <div class="mv-title-en">Haoto</div>
+          <span class="mv-status coming">▶ SHORT公開中</span>
+        </div>
+      </a>
+      <!-- 全曲ミックス -->
+      <a class="mv-card reveal" href="#" data-mv="mix">
+        <div class="mv-thumb"><img src="img/mix.jpg" alt="邪道Jado 能面の宴 全曲ミックス サムネイル" loading="lazy"></div>
+        <div class="mv-info">
+          <div class="mv-num">MIX — 37分 / 全曲</div>
+          <div class="mv-title">能面の宴</div>
+          <div class="mv-title-en">Full Discography Mix</div>
+          <span class="mv-status live">▶ WATCH</span>
+        </div>
+      </a>
       <!-- MV06 -->
       <a class="mv-card reveal" href="#" data-mv="mv06">
         <div class="mv-thumb"><img src="img/mv06.jpg" alt="邪道Jado MV06 炎上 / The Banquet Burns サムネイル" loading="lazy"></div>
@@ -747,6 +767,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // ============ MV links（後でikkosanさんが実URLに置換）============
 const MV_URLS = {
+  mv07: 'https://www.youtube.com/shorts/TDFKhBFSFUo', // 羽音 / Haoto（Short「聞こえるか。」。本編MV公開後に watch?v= へ差し替える）
+  mix:  'https://www.youtube.com/watch?v=TYp3rLSQO60', // 能面の宴 / 全曲ミックス 37分
   mv06: 'https://www.youtube.com/watch?v=3aZ3cvgacqs',  // 炎上 / The Banquet Burns（Official MV）
   mv05: 'https://www.youtube.com/watch?v=zMyYcqG2G14',  // 不在判決 / In Absentia（Official MV）
   mv01: 'https://www.youtube.com/watch?v=hdFvHNGgkNw',  // 逆さまの世界 / Upside-Down World
