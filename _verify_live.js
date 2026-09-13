@@ -38,6 +38,8 @@ const head = url => new Promise(res => {
     ['配信中セクション',   /id="listen"/],
     ['配信中のリード文',   /主要ストリーミングで「邪道Jado」を聴く。/],
     ['ヒーロー→配信中',   /href="#listen"/],
+    ['羽音 本編MVリンク',  /watch?v=aSeCrnE1uco/],
+    ['羽音 公開日表示',    /MV 07 — 2026.9.11/],
   ];
   console.log('  [index.html]');
   for (const [name, re] of checks) {
