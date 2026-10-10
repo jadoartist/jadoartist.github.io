@@ -33,13 +33,16 @@ const head = url => new Promise(res => {
       .on('error', () => res(''));
   });
   const checks = [
+    ['奴らのためカード',   /data-mv="mv08"/],
     ['羽音カード',        /data-mv="mv07"/],
     ['全曲ミックスカード', /data-mv="mix"/],
     ['配信中セクション',   /id="listen"/],
     ['配信中のリード文',   /主要ストリーミングで「邪道Jado」を聴く。/],
     ['ヒーロー→配信中',   /href="#listen"/],
-    ['羽音 本編MVリンク',  /watch?v=aSeCrnE1uco/],
-    ['羽音 公開日表示',    /MV 07 — 2026.9.11/],
+    ['ヒーロー→最新MV',   /▶ 最新MV「全部、奴らのため」を観る/],
+    ['奴らのため 本編MVリンク', /watch\?v=_utB1D7d-9Q/],
+    ['羽音 本編MVリンク',  /watch\?v=aSeCrnE1uco/],
+    ['奴らのため 公開日表示', /MV 08 — 2026\.10\.9/],
   ];
   console.log('  [index.html]');
   for (const [name, re] of checks) {
