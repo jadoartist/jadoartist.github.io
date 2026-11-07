@@ -29,20 +29,23 @@ const head = url => new Promise(res => {
 
   // ① index.html 自体が最新か（ヒーローと新カードの有無で判定）
   const live = await new Promise(res => {
-    https.get(BASE, r => { let b = ''; r.on('data', c => b += c); r.on('end', () => res(b)); })
+    // setEncoding 必須：Buffer のまま += すると、チャンク境界で日本語が割れて誤って FAILED になる
+    https.get(BASE, r => { r.setEncoding('utf8'); let b = ''; r.on('data', c => b += c); r.on('end', () => res(b)); })
       .on('error', () => res(''));
   });
   const checks = [
+    ['寸法カード',        /data-mv="mv09"/],
     ['奴らのためカード',   /data-mv="mv08"/],
     ['羽音カード',        /data-mv="mv07"/],
     ['全曲ミックスカード', /data-mv="mix"/],
     ['配信中セクション',   /id="listen"/],
     ['配信中のリード文',   /主要ストリーミングで「邪道Jado」を聴く。/],
     ['ヒーロー→配信中',   /href="#listen"/],
-    ['ヒーロー→最新MV',   /▶ 最新MV「全部、奴らのため」を観る/],
+    ['ヒーロー→最新MV',   /▶ 最新MV「寸法」を観る/],
+    ['寸法 本編MVリンク',  /watch\?v=GHBQjaDgalI/],
     ['奴らのため 本編MVリンク', /watch\?v=_utB1D7d-9Q/],
     ['羽音 本編MVリンク',  /watch\?v=aSeCrnE1uco/],
-    ['奴らのため 公開日表示', /MV 08 — 2026\.10\.9/],
+    ['寸法 公開日表示',    /MV 09 — 2026\.11\.6/],
   ];
   console.log('  [index.html]');
   for (const [name, re] of checks) {
